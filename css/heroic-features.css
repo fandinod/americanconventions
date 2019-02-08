@@ -6,3 +6,7 @@
 body {
   padding-top: 56px;
 }
+.jumbotron {
+  background-image: url("../IMG/UNIT01.jpg");
+  background-size: cover;
+}
