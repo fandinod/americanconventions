@@ -19,6 +19,36 @@
 </head>
 
 <body>
+  
+  <!-- The following is Mapbox code -->
+ <meta charset='utf-8' />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    
+       <style>
+        body { margin:0; padding:0; }
+        
+       .marker {
+            background-image: url('https://tokyo6420.com/olympicicon2.png');
+            background-size: cover;
+            width: 30px;
+            height: 30px;
+            border-radius: 30%;
+            cursor: pointer;
+                }
+                
+       .mapboxgl-popup {
+             max-width: 200px;
+                }
+
+            .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            }
+    </style>
+    
+  <!-- You're out of touch. I'm out of time -->
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -63,6 +93,96 @@
     </div>
 
     <!-- Page Features -->
+    
+    <!-- The following is Mapbox code -->
+
+<div id='map' style='width: 1100px; height: 300px; bottom: 10px'></div>
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiZmFuZGlub2QiLCJhIjoiY2o4cTMwZG04MG5rZjJxcXVqZ3c5bnVsbyJ9.VtyB1YxPfiTAH6JaSH-5XQ';
+
+// Set bounds to Tokyo
+var bounds = [
+    [139.6605422381296, 35.660669906226914], // Southwest coordinates
+    [139.8231711604625, 35.701455347398365]  // Northeast coordinates
+];
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v9',
+    center: [139.8231, 35.7014],
+    zoom: 8,
+    maxBounds: bounds // Sets bounds as max
+});
+
+<!-- This is custom Mapbox code -->
+
+var geojson = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [139.6999, 35.6673]
+    },
+    properties: {
+      title: 'National Gymnasium and Annex',
+        description: '<strong>Swimming, diving and basketball venue</strong><br><a href=\"http://tokyo6420.com/nationalgym.html" target=\"_blank\" title=\"Opens in a new window\">National Gymnasium and Annex</a>',
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [139.7717, 35.6804]
+    },
+    properties: {
+      title: 'Nihonbashi',
+        description: '<strong>The Nihonbashi Bridge, former center of Tokyo</strong><br><a href=\"http://tokyo6420.com/nationalgym.html" target=\"_blank\" title=\"Opens in a new window\">Nihonbashi Bridge</a>',
+    }
+  },
+     {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [139.7499, 35.6933]
+    },
+    properties: {
+      title: 'Nippon Bukodan',
+        description: '<strong>Judo venue</strong><br><a href=\"http://tokyo6420.com/nationalgym.html" target=\"_blank\" title=\"Opens in a new window\">Nippon Bukodan</a>',
+    }
+     },
+     {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [139.7170, 35.6745]
+    },
+    properties: {
+      title: 'Meiji Jingu Stadium',
+      description: '<strong>Baseball stadium</strong><br><a href=\"http://tokyo6420.com/nationalgym.html" target=\"_blank\" title=\"Opens in a new window\">Meiji Jinju Stadium</a>',
+    }
+  }]
+};
+
+       // add markers to map
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+  .setLngLat(marker.geometry.coordinates)
+  .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+  .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+  .addTo(map);
+});
+
+</script>
+
+<!-- Cause every time we touch I get this feeling and every time we kiss I swear I could fly -->
 
   <!-- /.container -->
 
