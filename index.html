@@ -103,14 +103,14 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZmFuZGlub2QiLCJhIjoiY2o4cTMwZG04MG5rZjJxcXVqZ
 
 // Set bounds to USA
 var bounds = [
-    [-122.931425888, 24.342126192], // Southwest coordinates
-    [65.7972437393, 49.0693273344],  // Northeast coordinates
+    [24.342126192, -122.931425888], // Southwest coordinates
+    [49.0693273344, 65.7972437393],  // Northeast coordinates
 ];
 
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/fandinod/cjsy0cmo81t8d1fqpbfgpgbq5',
-    center: [96.310117028, 41.7603055706],
+    center: [41.7603055706, 96.310117028],
     zoom: 8,
     maxBounds: bounds // Sets bounds as max
 });
