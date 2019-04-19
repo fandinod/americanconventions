@@ -10,3 +10,7 @@ body {
   background-image: url("https://fandinod.github.io/americanconventions/IMG/UNIT02.jpg");
   background-size: cover;
 }
+p {
+  margin-left: 5px;
+  margin-right: 5px;
+}
